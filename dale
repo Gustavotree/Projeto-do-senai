@@ -1,0 +1,103 @@
+
+package JFrameProjects.src;// Não sei se vai ser necessario colocar no pc ai do senai, Qualquer B.O com isso chamem o professor
+//Abaixo são bibliotecas necessárias para funcionamento das coisas criadas, janela, botão
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+
+import javax.swing.JButton;
+
+public class Projeto extends JFrame {
+  public static void main(String[] args) {
+      JFrame janela = new JFrame("Projeto"); //Criando a janela principal
+      
+      JButton nova_nota = new JButton("Nova Nota");/* Criando o botão */
+      JButton nova_lista = new JButton("Nova Lista"); // entre parenteses E dentro das aspas, são o título
+      JButton ver_tarefas = new JButton("Ver Tarefas");// das "coisas" criadas, no caso botão e janela...Recomendo que vcs troquem o nome q esta dentro das aspas para entender.
+  
+    
+      janela.setLayout(null); //isto faz com que tudo o que adicionamos na janela, seja movido por coordenadas(.setBounds(x, y, larg, alt).
+     JLabel Titulo = new JLabel("Digite o nome da tarefa :");
+    Titulo.setFont(new Font("Times new Roman", Font.BOLD, 15));
+   Titulo.setLocation(250,50);
+   Titulo.setSize(300,20);
+   Titulo.setVisible(true);
+     janela.add(Titulo);
+      
+     JTextField teste = new JTextField();
+      teste.setLocation(420,50);
+      teste.setSize(500,20);
+      teste.setVisible(true);
+      janela.add(teste);
+     
+      
+      JLabel Titulo1 = new JLabel("Digite sua Tarefa :");
+      Titulo1.setFont(new Font("Times new Roman", Font.BOLD, 15));
+     Titulo1.setLocation(290,100);
+     Titulo1.setSize(300,20);
+     Titulo1.setVisible(true);
+       janela.add(Titulo1);
+       
+     
+       JTextArea teste1 = new JTextArea(10,10);
+      teste1.setLocation(420,100);
+      teste1.setSize(500,200);
+      teste1.setVisible(true);
+      teste1.setLineWrap(true);//Isso quebra a linha :) 
+      janela.add(teste1);
+      JButton botaosalvar= new JButton("Salvar");
+     
+      
+      JPanel pagel = new JPanel();//adicionando Jpánel  
+      pagel.setVisible(true);// deixei visivel 
+      pagel.setBounds(240, 20, 920, 578);// setei o tamanho 
+      janela.add(pagel);// adiocionei no  Jframe
+    
+      //.setBounds(x = horizontal , y = vertical , widht = largura , height = altura);
+      
+      
+                              //**Projeto é o NOME DA CLASSE( NÃO ESQUECAM DE ALTERAR ESSA PARTE QUANDO CRIAR UM ARQ.JAVA COM NOME DIFERENTE)**
+                              //Então recomendo que criem arq.java com nome "Projeto.java"
+      ImageIcon imagem = new ImageIcon(Projeto.class.getResource("Planodefundo.png"));//"planodefundo1.png" é o nome da foto que OBRIGATORIAMENTE deve estar na pasta "src" onde o arq "Projeto.java" foi criado.
+      JLabel label = new JLabel(imagem);//Foi criado uma label e entre parenteses, adicionado a foto nela,[Assistam este video para entender sobre essa parte ( https://youtu.be/FEl2W1Mhkf0 )]
+      label.setBounds(0, 0, 1200, 678);//largura e tamanho iguais ao da janela para ficar do tamanho exato da janela;                  //Avance para o minuto 1:45***
+
+      Color cor_bt = new Color(210,180,140);// Para entender essa parte assista esse video ( https://youtu.be/LSWmgtblE7A )
+      nova_nota.setBackground(cor_bt);// não é complicado de entender;
+      nova_lista.setBackground(cor_bt);
+      ver_tarefas.setBackground(cor_bt);
+
+      nova_nota.setBounds(10, 15, 182, 46); // adicionado as coodenadas(posições e tamanhos) dos botões ;
+      nova_lista.setBounds(10, 83, 182, 46);
+      ver_tarefas.setBounds(10, 151, 182, 46);
+
+      
+      
+      
+      
+      
+      janela.add(nova_nota); // janela = proprio nome ja diz o que é kkkk;
+      janela.add(nova_lista);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
+      janela.add(ver_tarefas);
+      janela.add(label);
+      
+                  //widht: largura = 1200, height: altura = 678;
+      janela.setSize(1200, 678);// setSize: adiciona o tamanho do componente, neste caso, largura e altura da janela;
+      janela.setResizable(false);// setResizable(false), quer dizer que a janela não poderá ser redimensionada = maximizar ou minimizar;
+      janela.setVisible(true);// setVisible(true), diz que a janela será visivel;
+      janela.setLocationRelativeTo(null);// este comando faz com que a janela inicie no CENTRO do monitor;
+      janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// este comando serve para que assim q fechem a janela, ele fecha a aplicação total
+                                                          // Sendo assim não alocando(guardando) memória atoa;
+  }
+}
+      /*Aviso: gente por favor, criem variaveis que seja de facil enteendimento para todos,
+       exemplo: bt_nova_lista, janela_principal, janela_nova_lista. Não importa que o nome fique grande.
+       O importante é que vcs evitem abreviar nome de variáveis.*/
+      //Entendeu dona SABRINA... kkkkkkkkk
+      //Qualquer coisa podem me chamar no whatsApp
