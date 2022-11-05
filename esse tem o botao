@@ -2,7 +2,6 @@ package JFrameProjects.src;// Não sei se vai ser necessario colocar no pc ai do
 //Abaixo são bibliotecas necessárias para funcionamento das coisas criadas, janela, botão
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -14,13 +13,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class Projeto extends JFrame  {
 
+public class Projeto extends JFrame implements ActionListener {
+	
+	
+	
 public static void main(String[] args) {
-      JFrame janela = new JFrame("Projeto"); //Criando a janela principal 
-      JButton nova_nota = new JButton("Nova Nota");/* Criando o botão */
-      JButton nova_lista = new JButton("Nova Lista"); // entre parenteses E dentro das aspas, são o título
-      JButton ver_tarefas = new JButton("Ver Tarefas");// das "coisas" criadas, no caso botão e janela...Recomendo que vcs troquem o nome q esta dentro das aspas para entender.
+	
+	
+	 
+	JFrame janela = new JFrame("Projeto"); //Criando a janela principal 
+	JButton nova_nota = new JButton("Nova Nota");/* Criando o botão */
+	JButton nova_lista = new JButton("Nova Lista"); // entre parenteses E dentro das aspas, são o título
+	JButton ver_tarefas = new JButton("Ver Tarefas");// das "coisas" criadas, no caso botão e janela...Recomendo que vcs troquem o nome q esta dentro das aspas para entender.
 
       janela.setLayout(null); //isto faz com que tudo o que adicionamos na janela, seja movido por coordenadas(.setBounds(x, y, larg, alt).
      JLabel Titulo = new JLabel("Digite o Titulo:");
@@ -39,6 +44,12 @@ public static void main(String[] args) {
       teste.setVisible(true);
 
       janela.add(teste);
+      JTextArea teste1 = new JTextArea(10,10);
+      teste1.setLocation(420,100);
+      teste1.setSize(600,400);
+      teste1.setVisible(true);
+      teste1.setLineWrap(true);//Isso quebra a linha :) 
+      janela.add(teste1);
       	
       JLabel Titulo1 = new JLabel("Digite sua Tarefa :");
       Titulo1.setFont(new Font("Times new Roman", Font.BOLD, 15));
@@ -47,40 +58,75 @@ public static void main(String[] args) {
       Titulo1.setVisible(true);
       janela.add(Titulo1);
       	
+      JPanel pagel = new JPanel();
+      pagel.setVisible(true);
+      pagel.setBounds(202, 0, 983, 700);
      
+      JButton nd = new JButton ("ee");
+      nd .setVisible(true);
+      nd .setSize(200,40);
+      nd .setLocation(200,500);
       
-       	JTextArea teste1 = new JTextArea(10,10);
-       	teste1.setLocation(420,100);
-       	teste1.setSize(600,400);
-       	teste1.setVisible(true);
-       	teste1.setLineWrap(true);//Isso quebra a linha :) 
-       	janela.add(teste1);
+       	JPanel pagel2 = new JPanel();
+       	pagel2.setVisible(true);
+       	pagel2.setBounds(202, 0, 983, 700);
+
+
+     JPanel contenedor = new JPanel();
+     contenedor.setVisible(true);
+     contenedor.setBounds(202, 0, 983, 700);
      
-       	
-       	JButton botao_salvar= new JButton("Salvar");
-       	botao_salvar.setVisible(true);
-       	botao_salvar.setSize(200,40);
-       	botao_salvar.setLocation(700,500);
-       		
-      botao_salvar.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(null,"" );	
-		}
-    	  
-      });janela.add(botao_salvar);
+     JButton botao_salvar= new JButton("Salvar");
+     botao_salvar.setVisible(true);
+     botao_salvar.setSize(200,40);
+     botao_salvar.setLocation(700,500);
+     
+     nova_nota.addActionListener(new ActionListener() {
+    	 public void actionPerformed(ActionEvent ae) {
+    		 
+    		 Object vt = ae.getSource();
+    		 if(vt.equals(nova_nota)) {
+    			 pagel2.setVisible(false);	
+    			 pagel.setVisible(true);
+    			 
+    			 contenedor.add(pagel);
+    			 contenedor.validate();
+    			
+    			 
+    		 } if(vt.equals(nova_lista)) {
+    			 pagel2.setVisible(true);	
+    			 pagel.setVisible(false);
+    			 
+    			 contenedor.add(pagel2);
+    			 contenedor.validate();
+    			
+    		 }
+    	 }
+
+		
+	    	
+	    	 
+			
+		
+    	 
+     });janela.add(botao_salvar);
+    
+     
       	
-       
+     janela.add(contenedor);
+     
 
-     JPanel pagel = new JPanel();//adicionando Jpánel  qfgl[	ehp
-      pagel.setVisible(true);// deixei visivel 
-      pagel.setBounds(202, 0, 983, 700);// setei o tamanho 
-      	janela.add(pagel);// adiocionei no  Jframe
-
-      //.setBounds(x = horizontal , y = vertical , widht = largura , height = altura);
+     
       
       
-                              //**Projeto é o NOME DA CLASSE( NÃO ESQUECAM DE ALTERAR ESSA PARTE QUANDO CRIAR UM ARQ.JAVA COM NOME DIFERENTE)**
-                              //Então recomendo que criem arq.java com nome "Projeto.java"
+                           
+      
+      
+      
+  
+      
+      
+      //Então recomendo que criem arq.java com nome "Projeto.java"
       ImageIcon imagem = new ImageIcon(Projeto.class.getResource("Planodefundo.png"));//"planodefundo1.png" é o nome da foto que OBRIGATORIAMENTE deve estar na pasta "src" onde o arq "Projeto.java" foi criado.
       JLabel label = new JLabel(imagem);//Foi criado uma label e entre parenteses, adicionado a foto nela,[Assistam este video para entender sobre essa parte ( https://youtu.be/FEl2W1Mhkf0 )]
       label.setBounds(0, 0, 1200, 678);//largura e tamanho iguais ao da janela para ficar do tamanho exato da janela;                  //Avance para o minuto 1:45***
@@ -96,6 +142,9 @@ public static void main(String[] args) {
       ver_tarefas.setBounds(10, 151, 182, 46);
 
       
+      
+      
+      
       janela.add(nova_nota); // janela = proprio nome ja diz o que é kkkk;
       janela.add(nova_lista);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
       janela.add(ver_tarefas);
@@ -110,6 +159,12 @@ public static void main(String[] args) {
                                                           // Sendo assim não alocando(guardando) memória atoa;
   
 
+}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	
+	
 }  
 }
 
@@ -119,3 +174,4 @@ public static void main(String[] args) {
        O importante é que vcs evitem abreviar nome de variáveis.*/
       //Entendeu dona SABRINA... kkkkkkkkk
       //Qualquer coisa podem me chamar no whatsApp
+
