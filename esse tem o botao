@@ -22,141 +22,132 @@ public static void main(String[] args) {
 	
 	
 	 
-	JFrame janela = new JFrame("Projeto"); //Criando a janela principal 
+	JPanel Painelprincipal = new JPanel();   
+	JPanel Barra  = new JPanel();
+	JPanel Painel = new JPanel();
+	JPanel Painel2 = new JPanel();
+	
+	JTextField NomedaTarefa = new JTextField();
+	JTextArea TTarefa = new JTextArea(10,10);
+	
 	JButton nova_nota = new JButton("Nova Nota");/* Criando o botão */
 	JButton nova_lista = new JButton("Nova Lista"); // entre parenteses E dentro das aspas, são o título
 	JButton ver_tarefas = new JButton("Ver Tarefas");// das "coisas" criadas, no caso botão e janela...Recomendo que vcs troquem o nome q esta dentro das aspas para entender.
+	JButton botao_salvar= new JButton("Salvar");
+	
+	JLabel Titulo = new JLabel("Digite o Titulo:");
+	JLabel Titulo1 = new JLabel("Digite sua Tarefa :");
+	
+	JFrame janela = new JFrame("Projeto"); //Criando a janela principal 
 
       janela.setLayout(null); //isto faz com que tudo o que adicionamos na janela, seja movido por coordenadas(.setBounds(x, y, larg, alt).
-     JLabel Titulo = new JLabel("Digite o Titulo:");
-     Titulo.setFont(new Font("Times new Roman", Font.BOLD, 15));
-     Titulo.setLocation(300,50);
-     Titulo.setSize(300,20);
-     Titulo.setVisible(true);
-     janela.add(Titulo);
+     
+      
+    Titulo.setFont(new Font("Times new Roman", Font.BOLD, 15));
+    Titulo.setLocation(300,50);
+    Titulo.setSize(300,20);
+    Titulo.setVisible(true);
+      janela.add(Titulo);
     
      
       
-     JTextField teste = new JTextField();
-     teste.setFont(new Font("Serif ", Font.LAYOUT_RIGHT_TO_LEFT, 15));
-     teste.setLocation(420,50);
-      teste.setSize(500,20);
-      teste.setVisible(true);
-
-      janela.add(teste);
-      JTextArea teste1 = new JTextArea(10,10);
-      teste1.setLocation(420,100);
-      teste1.setSize(600,400);
-      teste1.setVisible(true);
-      teste1.setLineWrap(true);//Isso quebra a linha :) 
-      janela.add(teste1);
-      	
-      JLabel Titulo1 = new JLabel("Digite sua Tarefa :");
-      Titulo1.setFont(new Font("Times new Roman", Font.BOLD, 15));
-      Titulo1.setLocation(290,100);
-      Titulo1.setSize(400,20);
-      Titulo1.setVisible(true);
-      janela.add(Titulo1);
-      	
-      JPanel pagel = new JPanel();
-      pagel.setVisible(true);
-      pagel.setBounds(202, 0, 983, 700);
-     
-      JButton nd = new JButton ("ee");
-      nd .setVisible(true);
-      nd .setSize(200,40);
-      nd .setLocation(200,500);
+     NomedaTarefa.setFont(new Font("Serif ", Font.LAYOUT_RIGHT_TO_LEFT, 15));
+     NomedaTarefa.setLocation(420,50);
+     NomedaTarefa.setSize(500,20);
+     NomedaTarefa.setVisible(true);
+      	janela.add(NomedaTarefa);
       
-       	JPanel pagel2 = new JPanel();
-       	pagel2.setVisible(true);
-       	pagel2.setBounds(202, 0, 983, 700);
 
+      		TTarefa.setLocation(420,100);
+      		TTarefa.setSize(600,400);
+      		TTarefa.setVisible(true);
+      		TTarefa.setLineWrap(true);//Isso quebra a linha :) 
+         janela.add(TTarefa);
+      	
+     Titulo1.setFont(new Font("Times new Roman", Font.BOLD, 15));
+     Titulo1.setLocation(290,100);
+     Titulo1.setSize(400,20);
+     Titulo1.setVisible(true);
+        janela.add(Titulo1);
+      	
+        	botao_salvar.setVisible(true);
+        	botao_salvar.setSize(200,100);
+        	botao_salvar.setLocation(200,500);
+    	janela.add(botao_salvar);
+   
+      
+      Painel.add(Titulo);
+      Painel.add(NomedaTarefa);
+      Painel.add(Titulo1);
+      Painel.add(TTarefa);
+      Painel.add(botao_salvar);
+      
+       	
+      Painelprincipal.setBounds(202, 0, 983, 700);
+      Painel.setBounds(202, 0, 983, 700);
+      		Painel2.setBounds(202, 0, 983, 700);
+        
+    
+     
+     
+     janela.add(nova_nota); // janela = proprio nome ja diz o que é kkkk;
+     janela.add(nova_lista);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
+     janela.add(ver_tarefas);
+     
+     Barra . setBackground( Color.ORANGE);
+     Barra.setVisible(true);
+     Barra.setBounds(0, -10, 210, 700);
+     
+     ImageIcon imagem1 = new ImageIcon(Projeto.class.getResource("Barra.png"));
+     JLabel label1 = new JLabel(imagem1);
+     label1.setBounds(0, 0, 1200, 678);                
+     Barra.add(label1);
+     
+     
+     ImageIcon imagem = new ImageIcon(Projeto.class.getResource("Focas.png"));
+     JLabel label = new JLabel(imagem);
+     label.setBounds(0, 0, 1200, 678);                
+     Painelprincipal.add(label);
 
-     JPanel contenedor = new JPanel();
-     contenedor.setVisible(true);
-     contenedor.setBounds(202, 0, 983, 700);
-     
-     JButton botao_salvar= new JButton("Salvar");
-     botao_salvar.setVisible(true);
-     botao_salvar.setSize(200,40);
-     botao_salvar.setLocation(700,500);
-     
      nova_nota.addActionListener(new ActionListener() {
     	 public void actionPerformed(ActionEvent ae) {
     		 
     		 Object vt = ae.getSource();
     		 if(vt.equals(nova_nota)) {
-    			 pagel2.setVisible(false);	
-    			 pagel.setVisible(true);
-    			 
-    			 contenedor.add(pagel);
-    			 contenedor.validate();
+    			 Painel2.setVisible(false);	
+    			 Painel.setVisible(true);
+    			label.setVisible(false);
+    			 Painelprincipal.add(Painel);
+    			 Painelprincipal.validate();	
     			
-    			 
-    		 } if(vt.equals(nova_lista)) {
-    			 pagel2.setVisible(true);	
-    			 pagel.setVisible(false);
-    			 
-    			 contenedor.add(pagel2);
-    			 contenedor.validate();
     			
-    		 }
-    	 }
-
-		
-	    	
-	    	 
-			
-		
-    	 
-     });janela.add(botao_salvar);
+ } 
+}
+    	 });
     
      
       	
-     janela.add(contenedor);
+     janela.add( Painelprincipal);
+     janela.add(Barra);
      
-
-     
       
-      
-                           
-      
-      
-      
-  
-      
-      
-      //Então recomendo que criem arq.java com nome "Projeto.java"
-      ImageIcon imagem = new ImageIcon(Projeto.class.getResource("Planodefundo.png"));//"planodefundo1.png" é o nome da foto que OBRIGATORIAMENTE deve estar na pasta "src" onde o arq "Projeto.java" foi criado.
-      JLabel label = new JLabel(imagem);//Foi criado uma label e entre parenteses, adicionado a foto nela,[Assistam este video para entender sobre essa parte ( https://youtu.be/FEl2W1Mhkf0 )]
-      label.setBounds(0, 0, 1200, 678);//largura e tamanho iguais ao da janela para ficar do tamanho exato da janela;                  //Avance para o minuto 1:45***
 
 	
-      Color cor_bt = new Color(210,180,140);// Para entender essa parte assista esse video ( https://youtu.be/LSWmgtblE7A )
-      nova_nota.setBackground(cor_bt);// não é complicado de entender;
+      Color cor_bt = new Color(210,180,140);
+      nova_nota.setBackground(cor_bt);
       nova_lista.setBackground(cor_bt);
       ver_tarefas.setBackground(cor_bt);
-
-      nova_nota.setBounds(10, 15, 182, 46); // adicionado as coodenadas(posições e tamanhos) dos botões ;
+      
+      nova_nota.setBounds(10, 15, 182, 46);
       nova_lista.setBounds(10, 83, 182, 46);
       ver_tarefas.setBounds(10, 151, 182, 46);
-
       
       
-      
-      
-      janela.add(nova_nota); // janela = proprio nome ja diz o que é kkkk;
-      janela.add(nova_lista);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
-      janela.add(ver_tarefas);
-      janela.add(label);
-      
-                  //widht: largura = 1200, height: altura = 678;
-      janela.setSize(1200, 678);// setSize: adiciona o tamanho do componente, neste caso, largura e altura da janela;
-      janela.setResizable(false);// setResizable(false), quer dizer que a janela não poderá ser redimensionada = maximizar ou minimizar;
-      janela.setVisible(true);// setVisible(true), diz que a janela será visivel;
-      janela.setLocationRelativeTo(null);// este comando faz com que a janela inicie no CENTRO do monitor;
-      janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// este comando serve para que assim q fechem a janela, ele fecha a aplicação total
-                                                          // Sendo assim não alocando(guardando) memória atoa;
+      janela.setSize(1200, 678);
+      janela.setResizable(false);
+      janela.setVisible(true);
+      janela.setLocationRelativeTo(null);
+      janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   
 
 }
@@ -169,8 +160,4 @@ public void actionPerformed(ActionEvent e) {
 }
 
 
-      /*Aviso: gente por favor, criem variaveis que seja de facil enteendimento para todos,
-       exemplo: bt_nova_lista, janela_principal, janela_nova_lista. Não importa que o nome fique grande.
-       O importante é que vcs evitem abreviar nome de variáveis.*/
-      //Entendeu dona SABRINA... kkkkkkkkk
-      //Qualquer coisa podem me chamar no whatsApp
+     
