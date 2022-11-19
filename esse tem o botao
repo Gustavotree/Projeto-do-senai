@@ -12,7 +12,9 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import javax.swing.JButton;
 
 
@@ -20,8 +22,7 @@ public class Projeto extends JFrame implements ActionListener {
 	
 	
 	
-public static void main(String[] args) {
-
+public static void main(String[] args) throws IOException {
 	JPanel Painelprincipal = new JPanel();   
 	JPanel Painel_informaçoes = new JPanel();
 	JPanel Barra = new JPanel();
@@ -45,6 +46,12 @@ public static void main(String[] args) {
    
       nova_lista.setEnabled(false); //desativar o botao quando abris o botao
    
+      
+      //criar arquivo
+  
+     Path Arquivo1 = Path.of("c:\\teste\\texto.txt");
+     Files.createFile(Arquivo1);
+      
       //LABEL ESCRITO "DIGITE O TITULO"
     Titulo.setFont(new Font("Times new Roman", Font.BOLD, 15));
     Titulo.setLocation(400,0);
@@ -139,7 +146,7 @@ public static void main(String[] args) {
     		 if(vt.equals(nova_nota)) {
     			 nova_nota.setEnabled(false);//desabilita o botao 
     			 nova_lista.setEnabled(true);//
-    			
+    			 ver_tarefas .setEnabled(true);
     			 Painel_informaçoes.setVisible(true);
     				botao_salvar.setVisible(true);
     				TTarefa.setVisible(true);
@@ -161,6 +168,7 @@ public static void main(String[] args) {
 		 if(vt.equals(nova_lista)) {
 			 nova_lista.setEnabled(false);
 			 nova_nota.setEnabled(true);
+			 ver_tarefas .setEnabled(true);
 			 Painelprincipal.setVisible(true);
 			 Painel_informaçoes.setVisible(false);
 		
@@ -193,6 +201,8 @@ public static void main(String[] args) {
 					 if(vt1.equals( ver_tarefas )) {
 						 nova_lista.setEnabled(true);
 						 nova_nota.setEnabled(true);
+						
+						 ver_tarefas .setEnabled(false);
 						 Painelprincipal.setVisible(false);
 						 Painel_informaçoes.setVisible(false);
 						 Painel_salvos.setVisible(true);
@@ -211,15 +221,10 @@ public static void main(String[] args) {
 				 
 				 ver_tarefas .addActionListener(new ActionListener() {
 					 public void actionPerformed(ActionEvent ae) {
-						 
-						 Object vt1 = ae.getSource();
-				 
-				 
+	 
 				 
 					 }});
-     
-    
-     
+
      janela.add(NomedaTarefa);
      janela.add(Titulo);
      janela.add(Titulo1);
@@ -230,9 +235,6 @@ public static void main(String[] args) {
      janela.add( Painelprincipal);
      janela.add(Painel_salvos);
      janela.add(Barra);
-     
-      
-
 	
       Color cor_bt = new Color(210,180,140);
       nova_nota.setBackground(cor_bt);
@@ -250,9 +252,6 @@ public static void main(String[] args) {
       janela.setVisible(true);
       janela.setLocationRelativeTo(null);
       janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  
-
-   
 }
 
 @Override
@@ -264,3 +263,4 @@ public void actionPerformed(ActionEvent e) {
 
 
      
+    
