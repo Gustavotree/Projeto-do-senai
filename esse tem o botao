@@ -29,7 +29,7 @@ public static void main(String[] args) {
 	 
 	JPanel Painelprincipal = new JPanel();   
 	JPanel Barra  = new JPanel();
-	JPanel Painel = new JPanel();
+	JPanel Painel_informaçoes = new JPanel();
 	JPanel Painel2 = new JPanel();
 	
 	JTextField NomedaTarefa = new JTextField();
@@ -90,13 +90,13 @@ public static void main(String[] args) {
     	
     	
     	// painel (titulo e onde escrever o titulo)
-    Painel.setBackground(new Color(206,133,64));
+    	Painel_informaçoes.setBackground(new Color(206,133,64));
  
-     Painel.add(Titulo);
-      Painel.add(NomedaTarefa);
-      Painel.add(Titulo1);
-      Painel.add(TTarefa);
-      Painel.add(botao_salvar);
+    	Painel_informaçoes.add(Titulo);
+    	Painel_informaçoes.add(NomedaTarefa);
+    	Painel_informaçoes.add(Titulo1);
+    	Painel_informaçoes.add(TTarefa);
+    	Painel_informaçoes.add(botao_salvar);
     
       janela.add(NomedaTarefa);
       janela.add(Titulo);
@@ -106,7 +106,7 @@ public static void main(String[] args) {
 
       
       
-      Painel.setBounds(202, 0, 1200, 700);
+      Painel_informaçoes.setBounds(202, 0, 1200, 700);
       
        	//cRREGA TODOS
       Painelprincipal.setBounds(202, 0, 983, 700);
@@ -149,15 +149,17 @@ public static void main(String[] args) {
     			 nova_lista.setEnabled(true);//
     			
     			 Painel2.setVisible(false);	
-    			 Painel.setVisible(true);
+    			 Painel_informaçoes.setVisible(true);
     				botao_salvar.setVisible(true);
     				TTarefa.setVisible(true);
     				 Titulo.setVisible(true);
     			     NomedaTarefa.setVisible(true);
     				Titulo1.setVisible(true);
     				label.setVisible(false);
-    			janela.add(Painel);
-    			 Painelprincipal.validate();		
+    			janela.add(Painel_informaçoes);
+    			 Painelprincipal.validate();	
+    			
+    			
  } 
 }});
      nova_lista.addActionListener(new ActionListener() {
@@ -168,7 +170,7 @@ public static void main(String[] args) {
 			 nova_lista.setEnabled(false);
 			 nova_nota.setEnabled(true);
 			 Painelprincipal.setVisible(true);
-			 Painel.setVisible(false);
+			 Painel_informaçoes.setVisible(false);
 		
 				botao_salvar.setVisible(false);
 				TTarefa.setVisible(false);
@@ -176,7 +178,7 @@ public static void main(String[] args) {
 			     NomedaTarefa.setVisible(false);
 				Titulo1.setVisible(false);
 			 label.setVisible(true);
-			 Painelprincipal.add(Painel);
+			 Painelprincipal.add(Painel_informaçoes);
 			 Painelprincipal.validate();	
 			 }
 		 }
@@ -189,11 +191,18 @@ public static void main(String[] args) {
 					System.exit(0);
 					 }
 				 }
+
     	 });
+     
     
+     
+      	
      janela.add( Painelprincipal);
      janela.add(Barra);
- 
+     
+      
+
+	
       Color cor_bt = new Color(210,180,140);
       nova_nota.setBackground(cor_bt);
       nova_lista.setBackground(cor_bt);
