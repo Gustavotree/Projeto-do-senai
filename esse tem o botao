@@ -19,16 +19,13 @@ import javax.swing.JButton;
 
 
 public class Projeto extends JFrame implements ActionListener {
-	
-	
-	
 public static void main(String[] args) throws IOException {
-	JPanel Painelprincipal = new JPanel();   
-	JPanel Painel_informaçoes = new JPanel();
-	JPanel Barra = new JPanel();
-	JPanel Painel_salvos = new JPanel();
+JPanel Painelprincipal = new JPanel();   
+  JPanel Painel_informaçoes = new JPanel();
+    JPanel Barra = new JPanel();
+	 JPanel Painel_salvos = new JPanel();
 	
-	JTextField NomedaTarefa = new JTextField();
+JTextField NomedaTarefa = new JTextField();
 	JTextArea TTarefa = new JTextArea();
 	
 	JButton nova_nota = new JButton(" Criar Nota");/* Criando o botão */
@@ -41,16 +38,14 @@ public static void main(String[] args) throws IOException {
 	JLabel Titulo1 = new JLabel("Digite sua Tarefa :");
 	
 	JFrame janela = new JFrame("Projeto"); //Criando a janela principal 
-
       janela.setLayout(null); //isto faz com que tudo o que adicionamos na janela, seja movido por coordenadas(.setBounds(x, y, larg, alt).
    
       nova_lista.setEnabled(false); //desativar o botao quando abris o botao
    
-      
       //criar arquivo
   
-     Path Arquivo1 = Path.of("c:\\teste\\texto.txt");
-     Files.createFile(Arquivo1);
+    // Path Arquivo1 = Path.of("C:\\Users\\aluno\\Desktop\\teste\\text.txt");
+     //Files.createFile(Arquivo1);
       
       //LABEL ESCRITO "DIGITE O TITULO"
     Titulo.setFont(new Font("Times new Roman", Font.BOLD, 15));
@@ -60,19 +55,20 @@ public static void main(String[] args) throws IOException {
     
      
       //ONDE VAI SER ESCRITO O TITULO 
-     NomedaTarefa.setFont(new Font("Serif ", Font.LAYOUT_RIGHT_TO_LEFT, 12));
+     NomedaTarefa.setFont(new Font("Serif ", Font.LAYOUT_RIGHT_TO_LEFT,20));
      NomedaTarefa.setLocation(400,20);
-     NomedaTarefa.setSize(500,20);
+     NomedaTarefa.setSize(500,40);
      NomedaTarefa.setVisible(false);
       
       
          //lABEL 'PARA DIGITAR A TAREFA'
      Titulo1.setFont(new Font("Times new Roman", Font.BOLD, 15));
      Titulo1.setLocation(290,70);
-     Titulo1.setSize(400,20);
+     Titulo1.setSize(400,18);
      Titulo1.setVisible(false);
         
 //BLOCO DE NOTAS 
+     TTarefa.setFont(new Font("Mrs Eaves", Font.ITALIC, 20));
      TTarefa.setLocation(300,100);
      TTarefa.setSize(800,400);
      TTarefa.setVisible(false);
@@ -82,7 +78,7 @@ public static void main(String[] args) throws IOException {
       
         
         //ONDE VAI SER ARMAZENADO AS INFORMAÇO
-     botao_salvar.setVisible(false);
+            botao_salvar.setVisible(false);
         	botao_salvar.setSize(200,50);
         	botao_salvar.setLocation(970,540);
    //
@@ -107,8 +103,7 @@ public static void main(String[] args) throws IOException {
       //tela do botao da tarefas salvas 
       Painel_salvos.setBounds(202, 0, 1200, 700);
       Painel_salvos.setBackground(new Color(222,184,135));
-     
-      
+  
       
       //JFRAME 
       janela.add(nova_lista);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
@@ -122,22 +117,28 @@ public static void main(String[] args) throws IOException {
      Barra.setVisible(true);
      Barra.setBackground(new Color(206,133,64));
      Barra.setBounds(0, -10, 202, 700);
-   
      Barra.add(nova_lista);
      Barra.add(nova_nota);
      Barra.add(ver_tarefas);
      Barra.add(botao_sair);
-   
-     
-     
+    
      //IMAGEM DO PAINEL PRINCIPAL
+     ImageIcon imagem2 = new ImageIcon(Projeto.class.getResource("Focas.png"));
+     JLabel label2 = new JLabel(imagem2);
+     label2.setBounds(0, 0, 1200, 678);                
+     Painel_informaçoes.add(label2);
+    
      ImageIcon imagem = new ImageIcon(Projeto.class.getResource("Focas.png"));
      JLabel label = new JLabel(imagem);
      label.setBounds(0, 0, 1200, 678);                
      Painelprincipal.add(label);
-   
-  
      
+     
+     ImageIcon imagem3 = new ImageIcon(Projeto.class.getResource("Focas.png"));
+     JLabel label3 = new JLabel(imagem3);
+     label3.setBounds(0, 0, 1200, 678);                
+     Painel_salvos.add(label3);
+   
 //ACAO PARA O BOTAO nova_nota
      nova_nota.addActionListener(new ActionListener() {
     	 public void actionPerformed(ActionEvent ae) {
@@ -153,12 +154,10 @@ public static void main(String[] args) throws IOException {
     				 Titulo.setVisible(true);
     			     NomedaTarefa.setVisible(true);
     				Titulo1.setVisible(true);
-    				label.setVisible(false);
+    				label.setVisible(true);
     	
     			janela.add(Painel_informaçoes);
-    			 Painelprincipal.validate();	
-    			
-    			
+    			 Painelprincipal.validate();		
  } 
 }});
      nova_lista.addActionListener(new ActionListener() {
@@ -191,9 +190,6 @@ public static void main(String[] args) throws IOException {
 					System.exit(0);
 					 }
 				 }
-	
-	 
-	 
      });	 ver_tarefas .addActionListener(new ActionListener() {
 				 public void actionPerformed(ActionEvent ae) {
 					 
@@ -212,7 +208,8 @@ public static void main(String[] args) throws IOException {
 							 Titulo.setVisible(false);
 						     NomedaTarefa.setVisible(false);
 							Titulo1.setVisible(false);
-						 label.setVisible(true);
+						
+							label.setVisible(true);
 							Painelprincipal.add( Painel_informaçoes);
 						 Painelprincipal.validate();	
 						 }
@@ -224,6 +221,7 @@ public static void main(String[] args) throws IOException {
 	 
 				 
 					 }});
+				
 
      janela.add(NomedaTarefa);
      janela.add(Titulo);
@@ -263,4 +261,3 @@ public void actionPerformed(ActionEvent e) {
 
 
      
-    
