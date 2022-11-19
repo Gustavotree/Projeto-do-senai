@@ -7,9 +7,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,10 +35,11 @@ public static void main(String[] args) {
 	JTextField NomedaTarefa = new JTextField();
 	JTextArea TTarefa = new JTextArea(10,10);
 	
-	JButton nova_nota = new JButton("Nova Nota");/* Criando o botão */
-	JButton nova_lista = new JButton("Nova Lista"); // entre parenteses E dentro das aspas, são o título
-	JButton ver_tarefas = new JButton("Ver Tarefas");// das "coisas" criadas, no caso botão e janela...Recomendo que vcs troquem o nome q esta dentro das aspas para entender.
+	JButton nova_nota = new JButton(" Criar Nota");/* Criando o botão */
+	JButton nova_lista = new JButton(" Pagina inicial"); // entre parenteses E dentro das aspas, são o título
+	JButton ver_tarefas = new JButton("Tarefas");// das "coisas" criadas, no caso botão e janela...Recomendo que vcs troquem o nome q esta dentro das aspas para entender.
 	JButton botao_salvar= new JButton("Salvar");
+	JButton botao_sair= new JButton("sair");
 	
 	JLabel Titulo = new JLabel("Digite o Titulo:");
 	JLabel Titulo1 = new JLabel("Digite sua Tarefa :");
@@ -43,65 +47,76 @@ public static void main(String[] args) {
 	JFrame janela = new JFrame("Projeto"); //Criando a janela principal 
 
       janela.setLayout(null); //isto faz com que tudo o que adicionamos na janela, seja movido por coordenadas(.setBounds(x, y, larg, alt).
-     
+    
+      nova_lista.setEnabled(false);
+   
       //LABEL ESCRITO "DIGITE O TITULO"
     Titulo.setFont(new Font("Times new Roman", Font.BOLD, 15));
     Titulo.setLocation(300,50);
     Titulo.setSize(300,20);
-    Titulo.setVisible(true);
-      janela.add(Titulo);
+    Titulo.setVisible(false);
     
      
       //ONDE VAI SER ESCRITO O TITULO 
      NomedaTarefa.setFont(new Font("Serif ", Font.LAYOUT_RIGHT_TO_LEFT, 15));
      NomedaTarefa.setLocation(420,50);
      NomedaTarefa.setSize(500,20);
-     NomedaTarefa.setVisible(true);
-      	janela.add(NomedaTarefa);
+     NomedaTarefa.setVisible(false);
       
-//BLOCO DE NOTAS 
-      		TTarefa.setLocation(420,100);
-      		TTarefa.setSize(600,400);
-      		TTarefa.setVisible(true);
-      		TTarefa.setLineWrap(true);//Isso quebra a linha :) 
-         janela.add(TTarefa);
       
          //lABEL 'PARA DIGITAR A TAREFA'
      Titulo1.setFont(new Font("Times new Roman", Font.BOLD, 15));
      Titulo1.setLocation(290,100);
      Titulo1.setSize(400,20);
-     Titulo1.setVisible(true);
-        janela.add(Titulo1);
+     Titulo1.setVisible(false);
+        
+//BLOCO DE NOTAS 
+     TTarefa.setLocation(420,100);
+     TTarefa.setSize(600,400);
+     TTarefa.setVisible(false);
+     TTarefa.setLineWrap(true);//Isso quebra a linha :) 
+     TTarefa.add(Titulo1);
+     
       
+        
         //ONDE VAI SER ARMAZENADO AS INFORMAÇOES
-        	botao_salvar.setVisible(true);
-        	botao_salvar.setSize(200,100);
-        	botao_salvar.setLocation(200,500);
-    	janela.add(botao_salvar);
+     botao_salvar.setBackground(new Color(206,133,64));
+     botao_salvar.setVisible(false);
+        	botao_salvar.setSize(200,50);
+        	botao_salvar.setLocation(760,500);
    //
     	Painel2.setBounds(202, 0, 983, 700);
       
     	
     	
     	// painel (titulo e onde escrever o titulo)
-    Painel.setLayout(new FlowLayout(FlowLayout.CENTER,10,4));
-     Painel.setBackground(new Color(206,133,64));
-    Painel.add(Titulo);
-      
+    Painel.setBackground(new Color(206,133,64));
+ 
+     Painel.add(Titulo);
       Painel.add(NomedaTarefa);
       Painel.add(Titulo1);
       Painel.add(TTarefa);
       Painel.add(botao_salvar);
+    
+      janela.add(NomedaTarefa);
+      janela.add(Titulo);
+      janela.add(Titulo1);
+      janela.add(TTarefa);
+      janela.add(botao_salvar);
+
+      
+      
       Painel.setBounds(202, 0, 1200, 700);
       
        	//cRREGA TODOS
       Painelprincipal.setBounds(202, 0, 983, 700);
+      Painelprincipal.setBackground(new Color(222,184,135));
      
       		
       		
       		//JFRAME 
+      janela.add(nova_lista);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
      janela.add(nova_nota); // janela = proprio nome ja diz o que é kkkk;
-     janela.add(nova_lista);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
      janela.add(ver_tarefas);
  
      //BARRA DO CANTO ESQUERDO
@@ -109,9 +124,10 @@ public static void main(String[] args) {
      Barra.setVisible(true);
      Barra.setBackground(new Color(206,133,64));
      Barra.setBounds(0, -10, 202, 700);
-     Barra.add(nova_nota);
      Barra.add(nova_lista);
+     Barra.add(nova_nota);
      Barra.add(ver_tarefas);
+     Barra.add(botao_sair);
    
      
      
@@ -129,14 +145,19 @@ public static void main(String[] args) {
     		 
     		 Object vt = ae.getSource();
     		 if(vt.equals(nova_nota)) {
+    			 nova_nota.setEnabled(false);//desabilita o botao 
+    			 nova_lista.setEnabled(true);//
+    			
     			 Painel2.setVisible(false);	
     			 Painel.setVisible(true);
-    			
-    			 label.setVisible(false);
-    			 Painelprincipal.add(Painel);
-    			 Painelprincipal.validate();	
-    			
-    			
+    				botao_salvar.setVisible(true);
+    				TTarefa.setVisible(true);
+    				 Titulo.setVisible(true);
+    			     NomedaTarefa.setVisible(true);
+    				Titulo1.setVisible(true);
+    				label.setVisible(false);
+    			janela.add(Painel);
+    			 Painelprincipal.validate();		
  } 
 }});
      nova_lista.addActionListener(new ActionListener() {
@@ -144,33 +165,45 @@ public static void main(String[] args) {
 		 
 		 Object vt = ae.getSource();
 		 if(vt.equals(nova_lista)) {
+			 nova_lista.setEnabled(false);
+			 nova_nota.setEnabled(true);
 			 Painelprincipal.setVisible(true);
 			 Painel.setVisible(false);
-			
+		
+				botao_salvar.setVisible(false);
+				TTarefa.setVisible(false);
+				 Titulo.setVisible(false);
+			     NomedaTarefa.setVisible(false);
+				Titulo1.setVisible(false);
 			 label.setVisible(true);
 			 Painelprincipal.add(Painel);
 			 Painelprincipal.validate();	
 			 }
 		 }
+     });
+     botao_sair.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent ae) {
+				 
+				 Object vt = ae.getSource();
+				 if(vt.equals(botao_sair)) {
+					System.exit(0);
+					 }
+				 }
     	 });
     
-     
-      	
      janela.add( Painelprincipal);
      janela.add(Barra);
-     
-      
-
-	
+ 
       Color cor_bt = new Color(210,180,140);
       nova_nota.setBackground(cor_bt);
       nova_lista.setBackground(cor_bt);
       ver_tarefas.setBackground(cor_bt);
+      botao_sair.setBackground(cor_bt);
       
       nova_nota.setBounds(10, 15, 182, 46);
       nova_lista.setBounds(10, 83, 182, 46);
       ver_tarefas.setBounds(10, 151, 182, 46);
-      
+      botao_sair.setBounds(10, 151, 182, 46);
       
       janela.setSize(1200, 678);
       janela.setResizable(false);
@@ -187,6 +220,3 @@ public void actionPerformed(ActionEvent e) {
 	
 }  
 }
-
-
-     
