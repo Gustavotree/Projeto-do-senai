@@ -1,0 +1,220 @@
+package JFrameProjects.src;// Não sei se vai ser necessario colocar no pc ai do senai, Qualquer B.O com isso chamem o professor
+//Abaixo são bibliotecas necessárias para funcionamento das coisas criadas, janela, botão
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.swing.JButton;
+
+public class Projeto extends JFrame implements ActionListener {
+public static void main(String[] args) throws IOException {
+	JPanel Painelprincipal = new JPanel();   
+    JPanel Barra = new JPanel();
+    
+    JTextField NomedaTarefa = new JTextField();
+    JTextArea Texto = new JTextArea();
+	
+	JButton Criar_Nota= new JButton(" Criar Nota");/* Criando o botão */
+	JButton Tela_inicial = new JButton("Tela inicial"); // entre parenteses E dentro das aspas, são o título
+	JButton Tarefas_salvas= new JButton("Tarefas salvas");// das "coisas" criadas, no caso botão e janela...Recomendo que vcs troquem o nome q esta dentro das aspas para entender.
+	JButton botao_sair= new JButton("sair");
+	
+	JButton botao_salvar= new JButton("Salvar");
+	JButton Botao_Slot =  new JButton("Caixa");
+	
+	JLabel Titulo = new JLabel(" Titulo:");
+	JLabel Titulo1 = new JLabel("Digite sua Tarefa :");
+	
+	JFrame janela = new JFrame("Projeto"); //Criando a janela principal 
+      janela.setLayout(null); //isto faz com que tudo o que adicionamos na janela, seja movido por coordenadas(.setBounds(x, y, larg, alt).
+   
+      Tela_inicial.setEnabled(false); //desativar o botao 
+   
+    // Path Arquivo1 = Path.of("C:\\Users\\aluno\\Desktop\\teste\\text.txt");
+     //Files.createFile(Arquivo1);
+      
+      //LABEL ESCRITO "DIGITE O TITULO"
+    Titulo.setFont(new Font("Times new Roman", Font.BOLD, 15));
+    Titulo.setLocation(400,0);
+    Titulo.setSize(300,20);
+    Titulo.setVisible(false);
+    
+      //ONDE VAI SER ESCRITO O TITULO 
+     NomedaTarefa.setFont(new Font("Serif ", Font.LAYOUT_RIGHT_TO_LEFT,20));
+     NomedaTarefa.setLocation(400,20);
+     NomedaTarefa.setSize(500,40);
+     NomedaTarefa.setVisible(false);
+    
+       //lABEL 'PARA DIGITAR A TAREFA'
+     Titulo1.setFont(new Font("Times new Roman", Font.BOLD, 15));
+     Titulo1.setLocation(290,70);
+     Titulo1.setSize(400,18);
+     Titulo1.setVisible(false);
+  
+//BLOCO DE NOTAS 
+    Texto.setFont(new Font("Times",0, 19));
+    Texto.setLocation(300,100);
+    Texto.setSize(800,400);
+    Texto.setVisible(false);
+    Texto.setLineWrap(true);//Isso quebra a linha :) 
+
+   
+    //botao salvar
+    botao_salvar.setVisible(false);
+    botao_salvar.setSize(200,50);
+    botao_salvar.setLocation(970,540);
+    
+    Botao_Slot .setVisible(false);
+    Botao_Slot.setSize(200,40);
+    Botao_Slot.setLocation(300,100);
+
+
+    //cRREGA TODOS
+      Painelprincipal.setBounds(202, 0, 1200, 700);
+      Painelprincipal.setBackground(new Color(222,184,135));
+       //JFRAME 
+      janela.add(Tela_inicial);// janela.add = estará adicionado o componente na janela, tornando o botão visivel;
+      janela.add(Criar_Nota); // janela = proprio nome ja diz o que é kkkk;
+      janela.add(Tarefas_salvas);
+ 
+   
+   //BARRA DO CANTO ESQUERDO
+     Barra.setLayout(new FlowLayout(FlowLayout.LEFT,50,100));
+     Barra.setVisible(true);
+     Barra.setBackground(new Color(206,133,64));
+     Barra.setBounds(0, -10, 202, 700);
+     //IMAGEM DO PAINEL PRINCIPAL
+     ImageIcon imagem = new ImageIcon(Projeto.class.getResource("Focas.png"));
+     JLabel label = new JLabel(imagem);
+     label.setBounds(0, 0, 1200, 678);      
+     
+
+
+
+//ACAO PARA O BOTAO nova_nota
+     Criar_Nota.addActionListener(new ActionListener() {
+    	 public void actionPerformed(ActionEvent ae) { 
+    		 Object vt = ae.getSource();
+    		 if(vt.equals(Criar_Nota)) {
+    			 Criar_Nota.setEnabled(false);//desabilita o botao 
+    			 Tela_inicial.setEnabled(true);//
+    			 Tarefas_salvas .setEnabled(true);
+    				botao_salvar.setVisible(true);
+    				Texto.setVisible(true);
+    				 Titulo.setVisible(true);
+    			     NomedaTarefa.setVisible(true);
+    				Titulo1.setVisible(true);
+    				label.setVisible(true);
+    			 Painelprincipal.validate();} 
+}});
+     Tela_inicial.addActionListener(new ActionListener() {
+	 public void actionPerformed(ActionEvent ae) {
+		 
+		 Object vt = ae.getSource();
+		 if(vt.equals(Tela_inicial)) {
+			 Tela_inicial.setEnabled(false);
+			 Criar_Nota.setEnabled(true);
+			 Tarefas_salvas .setEnabled(true);
+			 Painelprincipal.setVisible(true);
+				botao_salvar.setVisible(false);
+				 Botao_Slot .setVisible(false);
+				Texto.setVisible(false);
+				 Titulo.setVisible(false);
+			     NomedaTarefa.setVisible(false);
+				Titulo1.setVisible(false);
+			 label.setVisible(true);
+			
+			 Painelprincipal.validate();}}
+});
+     botao_sair.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent ae) {
+				 
+				 Object vt = ae.getSource();
+				 if(vt.equals(botao_sair)) {
+					System.exit(0); } }
+});	   
+     botao_salvar.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 Object vt1 = ae.getSource();
+			 if(vt1.equals( botao_salvar)) {			
+				String Title =   NomedaTarefa.getText();}
+ }});
+	 Tarefas_salvas .addActionListener(new ActionListener() {
+	 public void actionPerformed(ActionEvent ae) {
+							 
+	 Object vt1 = ae.getSource();
+		if(vt1.equals( Tarefas_salvas )) {
+		 Tela_inicial.setEnabled(true);
+		 Criar_Nota.setEnabled(true);
+		 Tarefas_salvas .setEnabled(false);
+		 Painelprincipal.setVisible(true);
+		 Botao_Slot .setVisible(true);
+		 botao_salvar.setVisible(false);
+		Texto.setVisible(false);
+		 Titulo.setVisible(false);
+		 NomedaTarefa.setVisible(false);
+		 Titulo1.setVisible(false);
+		label.setVisible(true);
+		Painelprincipal.validate();	
+}
+}});
+	 Painelprincipal.add(label);
+	 Painelprincipal.add(Botao_Slot);
+	 Painelprincipal.add(Titulo);
+	 Painelprincipal.add(NomedaTarefa);
+	 Painelprincipal.add(Titulo1);
+	 Painelprincipal.add(Texto);
+	 Painelprincipal.add(botao_salvar);
+	 	
+	 Texto.add(Titulo1);
+	 
+	
+	 Barra.add(Tela_inicial);
+	 Barra.add(Criar_Nota);
+	 Barra.add(Tarefas_salvas);
+	 Barra.add(botao_sair);
+	 
+	
+	 janela.add(NomedaTarefa);
+     janela.add(Titulo);
+     janela.add(Titulo1);
+     
+     janela.add(Texto);
+     janela.add(botao_salvar);
+     janela.add(Botao_Slot);
+     janela.add( Painelprincipal);
+     janela.add(Barra);
+	
+      Color cor_bt = new Color(210,180,140);
+      Criar_Nota.setBackground(cor_bt);
+      Tela_inicial.setBackground(cor_bt);
+      Tarefas_salvas.setBackground(cor_bt);
+      botao_sair.setBackground(cor_bt);
+      
+      Criar_Nota.setBounds(10, 15, 182, 46);
+      Tela_inicial.setBounds(10, 83, 182, 46);
+      Tarefas_salvas.setBounds(10, 151, 182, 46);
+      botao_sair.setBounds(10, 151, 182, 46);
+   
+      janela.setSize(1200, 678);
+      janela.setResizable(false);
+      janela.setVisible(true);
+      janela.setLocationRelativeTo(null);
+      janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+}
+@Override
+public void actionPerformed(ActionEvent e) {}  
+}
+
+
+     
